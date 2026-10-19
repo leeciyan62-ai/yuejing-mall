@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f6f3ec"><title>悦境 MALL · 把城市的美好逛一遍</title><link rel="stylesheet" href="./src/style.css"><script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script></head>
+<body>
+<section id="intro" class="intro">
+<header class="intro-bar"><a class="brand" href="./" aria-label="悦境 MALL 首页"><span class="brand-icon">悦</span><span>悦境 <b>MALL</b><small>每一层，都是一条街</small></span></a><nav aria-label="主导航"><button id="guide-btn">游逛指南</button><button id="ops-btn">运营概览 ↗</button></nav><button class="bag-btn" id="bag-btn">逛购清单 <span id="bag-count">0</span></button></header>
+<div class="intro-hero"><p class="eyebrow">CHOOSE A FLOOR, THEN A STREET</p><h1>把城市的美好<br>逛一遍<span>。</span></h1><p>先选一层。每一层是三段夜市街，摊位排在左右两边。走进去，点地面就能走到摊位前。</p></div>
+<div id="floor-cards" class="floor-cards"></div>
+<footer class="intro-foot"><span>YUEJING MALL · 每层 3 段街</span><button id="receipt-btn">本次游逛 <b id="visited-count">0</b> / <b id="shop-total">150</b> 家　↗</button></footer>
+</section>
+<section id="market" class="market" hidden>
+<canvas id="scene" aria-label="本层摊位街，可拖动看招牌，点击店铺或地面"></canvas>
+<div class="market-hud">
+<button id="back-btn" class="hud-btn">← 返回选层</button>
+<div class="market-title"><strong id="market-floor">B1</strong><span><b id="market-name">烟火食集</b><small id="market-tag"></small></span></div>
+<button id="list-toggle" class="hud-btn">本层店铺</button>
+<button class="bag-btn" id="market-bag">清单 <span id="market-bag-count">0</span></button>
+</div>
+<div id="zone-switch" class="zone-switch" role="tablist" aria-label="这一层的三段街"></div>
+<p class="market-caption" id="scene-caption">点地面走过去<br><small>方向键也能走 · 拖动转头</small></p>
+<aside id="market-list" class="market-list" hidden>
+<div class="list-head"><div><p class="eyebrow">THIS STREET</p><h2 id="list-title">本层店铺</h2></div><button id="list-close" aria-label="关闭店铺列表">×</button></div>
+<div class="search-box"><span>⌕</span><input id="search" type="search" placeholder="搜索这一层的店" aria-label="搜索店铺"><kbd>⌘ K</kbd></div>
+<div class="list-heading"><span id="list-label">本层 30 家</span><span id="shop-count">30</span></div>
+<div id="shop-list" class="shop-list"></div>
+<button id="service-btn" class="text-btn">服务设施 ↗</button>
+</aside>
+<div id="loading">正在把这一层的招牌挂上去…</div>
+</section>
+<dialog id="shop-dialog" class="shop-dialog"><button class="close" aria-label="关闭">×</button><div id="shop-detail"></div></dialog>
+<dialog id="bag-dialog"><button class="close" aria-label="关闭">×</button><div class="eyebrow">MY LITTLE FINDS</div><h2>今天的心动清单</h2><p class="dialog-intro">留下喜欢，把美好带回家。</p><div id="bag-items"></div><div class="bag-total"><span>预计消费</span><strong id="bag-total">¥0</strong></div><p class="muted">仅为本地体验清单，不产生订单、付款或预约。</p><div class="dialog-actions"><button class="secondary" id="clear-bag">清空清单</button><button class="primary" id="finish-btn">生成游逛小票 ↗</button></div></dialog>
+<dialog id="info-dialog"><button class="close" aria-label="关闭">×</button><div id="info-content"></div></dialog>
+<dialog id="receipt-dialog"><button class="close" aria-label="关闭">×</button><div id="receipt-content"></div><button class="primary full" id="download-receipt">保存小票图片 ↓</button></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<script type="module" src="./src/main.js"></script>
+</body></html>
